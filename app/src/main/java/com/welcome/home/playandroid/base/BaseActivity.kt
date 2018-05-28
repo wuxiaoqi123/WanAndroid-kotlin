@@ -16,13 +16,13 @@ abstract class BaseActivity : RxAppCompatActivity() {
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
-    protected abstract fun initWindow(): Void
+    protected abstract fun initWindow()
 
-    protected abstract fun initData(): Void
+    protected abstract fun initData()
 
-    protected abstract fun initViews(): Void
+    protected abstract fun initViews()
 
-    protected abstract fun initListener(): Void
+    protected abstract fun initListener()
 
 
     fun <T> bindToLife(): LifecycleTransformer<T> {
