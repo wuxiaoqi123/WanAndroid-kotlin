@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initWindow() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not impleme nted") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
