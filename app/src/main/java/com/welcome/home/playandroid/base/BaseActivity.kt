@@ -9,8 +9,12 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 abstract class BaseActivity : RxAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initWindow()
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
+        initData();
+        initViews();
+        initListener();
     }
 
     @LayoutRes

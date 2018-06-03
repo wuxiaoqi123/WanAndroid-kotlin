@@ -47,29 +47,29 @@
             android:screenOrientation="portrait" />
 
         <!-- X5浏览器 -->
-        <activity
-            android:name=".activity.BrowserActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/app_name" />
+        <!--<activity-->
+            <!--android:name=".activity.BrowserActivity"-->
+            <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
+            <!--android:label="@string/app_name" />-->
 
-        <!-- 列表内列表页 -->
-        <activity
-            android:name=".activity.ColumnContentActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"
-            android:screenOrientation="portrait" />
+        <!--&lt;!&ndash; 列表内列表页 &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".activity.ColumnContentActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"-->
+            <!--android:screenOrientation="portrait" />-->
 
-        <!-- 注册或登录界面 -->
-        <activity
-            android:name=".activity.RegisterOrLoginActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullWindowTran" />
+        <!--&lt;!&ndash; 注册或登录界面 &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".activity.RegisterOrLoginActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/FullWindowTran" />-->
 
-        <!-- 收藏界面 -->
-        <activity
-            android:name=".activity.CollectionActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"
-            android:screenOrientation="portrait" />
+        <!--&lt;!&ndash; 收藏界面 &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".activity.CollectionActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"-->
+            <!--android:screenOrientation="portrait" />-->
     </application>
 
 </manifest>
