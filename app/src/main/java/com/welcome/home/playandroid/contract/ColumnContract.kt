@@ -2,14 +2,15 @@ package com.welcome.home.playandroid.contract
 
 import com.welcome.home.playandroid.base.IPresenter
 import com.welcome.home.playandroid.base.IView
-import com.welcome.home.playandroid.bean.CollectArticleList
+import com.welcome.home.playandroid.bean.ColumnList
 
-class CollectContract {
+class ColumnContract {
+
     interface View : IView {
-        fun collectSuccess(collectArticleList: CollectArticleList)
+        fun setColumnList(list: List<ColumnList>)
     }
 
     interface Presenter : IPresenter {
-        fun collectArticle(title: String, author: String, link: String)
+        fun getColumnList()
     }
 }
