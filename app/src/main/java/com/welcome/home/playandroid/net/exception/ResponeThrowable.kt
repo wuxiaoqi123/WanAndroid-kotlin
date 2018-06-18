@@ -1,5 +1,7 @@
 package com.welcome.home.playandroid.net.exception
 
+import java.lang.Exception
+
 
 class ResponeThrowable : Exception {
     var code: Int = 0
