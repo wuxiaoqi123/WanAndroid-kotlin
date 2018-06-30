@@ -8,20 +8,36 @@ import com.welcome.home.playandroid.bean.ColumnList
 
 class ColumnExpandableListViewAdapter(context: Context) : BaseExpandableListAdapter() {
 
-    var mColumnLists: List<ColumnList>? = null
+    var mColumnLists: MutableList<ColumnList>? = null
     var mContext: Context? = context
 
     init {
         mColumnLists = ArrayList()
     }
 
-    fun setColumnLists(columnList: List<ColumnList>) {
-        mColumnLists?.firstOrNull()
+    fun setColumnLists(columnList: MutableList<ColumnList>) {
+        mColumnLists?.clear()
+        mColumnLists?.addAll(columnList)
+        notifyDataSetChanged()
+    }
+
+    fun addColumnLists(columnList: MutableList<ColumnList>) {
+        mColumnLists?.addAll(columnList)
+        notifyDataSetChanged()
     }
 
 
-    override fun getGroup(groupPosition: Int): Any {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getGroup(groupPosition: Int): Int? {
+        return mColumnLists?.size
+    }
+
+    override fun getChildrenCount(groupPosition: Int): Int {
+        if (mColumnLists == null) return 0
+        return mColumnLists?.get(groupPosition)?.children?.size!!
+    }
+
+    override fun getGroupCount(): Int {
+        return mColumnLists?.size!!
     }
 
     override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
@@ -33,10 +49,6 @@ class ColumnExpandableListViewAdapter(context: Context) : BaseExpandableListAdap
     }
 
     override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup?): View {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getChildrenCount(groupPosition: Int): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -53,10 +65,6 @@ class ColumnExpandableListViewAdapter(context: Context) : BaseExpandableListAdap
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getGroupCount(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
