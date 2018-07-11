@@ -1,6 +1,12 @@
 package com.welcome.home.playandroid.presenter
 
+import com.welcome.home.playandroid.bean.ColumnList
 import com.welcome.home.playandroid.contract.ColumnContract
+import com.welcome.home.playandroid.net.api.WanAndroidApi
+import com.welcome.home.playandroid.net.callback.RxObserver
+import com.welcome.home.playandroid.net.exception.ResponeThrowable
+import com.welcome.home.playandroid.net.http.HttpUtils
+import com.welcome.home.playandroid.net.transformer.DefaultTransformer
 
 /**
  * <pre>
@@ -20,6 +26,18 @@ class ColumnPresenter : ColumnContract.Presenter {
     }
 
     override fun getColumnList() {
+        HttpUtils.Singleton.instance.getRetrofitClient().build(WanAndroidApi::class.java)!!
+                .getColumnList()
+                .compose(DefaultTransformer<List<ColumnList>>())
+                .compose(mView!!.bindToLife<List<ColumnList>>())
+                .subscribe(object : RxObserver<List<ColumnList>>() {
+                    override fun onFail(ex: ResponeThrowable) {
+                        mView!!.showErrMsg(ex.message!!)
+                    }
 
+                    override fun onSuccess(columnLists: List<ColumnList>) {
+                        mView!!.setColumnList(columnLists)
+                    }
+                })
     }
 }
