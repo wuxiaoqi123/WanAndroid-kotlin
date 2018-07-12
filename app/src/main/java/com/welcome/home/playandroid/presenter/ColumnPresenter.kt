@@ -28,7 +28,7 @@ class ColumnPresenter : ColumnContract.Presenter {
     override fun getColumnList() {
         HttpUtils.Singleton.instance.getRetrofitClient().build(WanAndroidApi::class.java)!!
                 .getColumnList()
-                .compose(DefaultTransformer<List<ColumnList>>())
+                .compose(DefaultTransformer())
                 .compose(mView!!.bindToLife<List<ColumnList>>())
                 .subscribe(object : RxObserver<List<ColumnList>>() {
                     override fun onFail(ex: ResponeThrowable) {
