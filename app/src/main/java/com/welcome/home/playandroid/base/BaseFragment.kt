@@ -67,7 +67,7 @@ abstract class BaseFragment : RxFragment() {
 
     abstract fun initView(savedInstanceState: Bundle?)
 
-    protected fun <T> bindToLiefe(): LifecycleTransformer<T> {
+    open fun <T> bindToLife(): LifecycleTransformer<T> {
         return bindUntilEvent(FragmentEvent.DESTROY)
     }
 }
