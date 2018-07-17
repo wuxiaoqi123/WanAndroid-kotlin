@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.widget.ExpandableListView
 import android.widget.Toast
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import com.scwang.smartrefresh.layout.util.SmartUtil
-import com.trello.rxlifecycle2.LifecycleTransformer
 import com.welcome.home.playandroid.R
 import com.welcome.home.playandroid.adapter.ColumnExpandableListViewAdapter
 import com.welcome.home.playandroid.base.BaseFragment
@@ -64,7 +61,7 @@ class ColumnFragment : BaseFragment(), ColumnContract.View {
     override fun initListener() {
     }
 
-    override fun setColumnList(list: List<ColumnList>) {
+    override fun setColumnList(list: MutableList<ColumnList>) {
         smartRefreshLayout?.finishRefresh()
         mAdapter?.setColumnLists(list)
     }

@@ -7,7 +7,7 @@ import com.welcome.home.playandroid.bean.ColumnList
 class ColumnContract {
 
     interface View : IView {
-        fun setColumnList(list: List<ColumnList>)
+        fun setColumnList(list: MutableList<ColumnList>)
     }
 
     interface Presenter : IPresenter {
