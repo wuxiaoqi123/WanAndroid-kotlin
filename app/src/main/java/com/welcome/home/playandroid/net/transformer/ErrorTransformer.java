@@ -7,7 +7,6 @@ import com.welcome.home.playandroid.net.response.HttpResponse;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
-import io.reactivex.functions.Function;
 
 /**
  * Created by wuxiaoqi on 2018/4/26.
@@ -23,7 +22,7 @@ public class ErrorTransformer<T> implements ObservableTransformer<HttpResponse<T
                 return tHttpResponse.getData();
             }
         }).onErrorResumeNext(throwable -> {
-            return Observable.error(ExceptionHandler.handleException(throwable));
+            return Observable.error(ExceptionHandler.Companion.handleException(throwable));
         });
     }
 

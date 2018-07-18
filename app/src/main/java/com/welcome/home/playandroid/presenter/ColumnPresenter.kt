@@ -29,13 +29,13 @@ class ColumnPresenter : ColumnContract.Presenter {
         HttpUtils.Singleton.instance.getRetrofitClient().build(WanAndroidApi::class.java)!!
                 .getColumnList()
                 .compose(DefaultTransformer())
-                .compose(mView!!.bindToLife<List<ColumnList>>())
-                .subscribe(object : RxObserver<List<ColumnList>>() {
+                .compose(mView!!.bindToLife<MutableList<ColumnList>>())
+                .subscribe(object : RxObserver<MutableList<ColumnList>>() {
                     override fun onFail(ex: ResponeThrowable) {
                         mView!!.showErrMsg(ex.message!!)
                     }
 
-                    override fun onSuccess(columnLists: List<ColumnList>) {
+                    override fun onSuccess(columnLists: MutableList<ColumnList>) {
                         mView!!.setColumnList(columnLists)
                     }
                 })

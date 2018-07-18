@@ -38,7 +38,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     private fun initRefreshLayout() {
         SmartRefreshLayoutUtils.initRefreshLayoutBz(activity!!, smartRefreshLayout!!)
         smartRefreshLayout?.setEnableLoadMore(false)
-        smartRefreshLayout?.setOnRefreshListener { refreshLayout -> presenterImp.getColumnList() }
+        smartRefreshLayout?.setOnRefreshListener { refreshLayout ->
+//            presenterImp.getColumnList()
+        }
     }
 
     override fun setBannerList(bannerList: List<BannerList>) {

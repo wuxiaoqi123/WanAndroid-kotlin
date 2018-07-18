@@ -11,7 +11,7 @@ interface WanAndroidApi {
     fun getHomeList(@Path("page") page: Int): Observable<HttpResponse<HomeList>>
 
     @GET("/tree/json")
-    fun getColumnList(): Observable<HttpResponse<List<ColumnList>>>
+    fun getColumnList(): Observable<HttpResponse<MutableList<ColumnList>>>
 
     @GET("/article/list/{page}/json")
     fun getColumnContentList(@Path("page") page: Int, @Query("cid") c_id: Int): Observable<HttpResponse<ColumnContentList>>
