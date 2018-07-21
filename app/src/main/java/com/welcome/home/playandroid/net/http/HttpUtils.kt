@@ -22,8 +22,13 @@ import java.util.concurrent.TimeUnit
  * </pre>
  */
 class HttpUtils private constructor() {
+
     companion object {
         val TAG = "HttpUtils"
+
+        fun getInstance(): HttpUtils {
+            return Singleton.instance
+        }
     }
 
     private var mOkHttpClient: OkHttpClient? = null
@@ -76,10 +81,6 @@ class HttpUtils private constructor() {
             }
         }
         response
-    }
-
-    fun getInstance(): HttpUtils {
-        return Singleton.instance
     }
 
     fun init(context: Context) {

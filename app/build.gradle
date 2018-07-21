@@ -14,14 +14,31 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue("string", "server_url", "http://www.wanandroid.com/")
-//        ndk {
-//            abiFilters "armeabi"
-//        }
+        ndk {
+            abiFilters "armeabi"
+        }
     }
 
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'news_client'
+            keyPassword 'android'
+            storeFile file('keystore/news_client.jks')
+            storePassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
