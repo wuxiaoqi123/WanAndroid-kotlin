@@ -2,7 +2,10 @@ package com.welcome.home.playandroid.presenter
 
 import com.welcome.home.playandroid.contract.RegisterOrLoginContract
 
-class RegisterOrLoginPresenterImp :RegisterOrLoginContract.Presenter{
+class RegisterOrLoginPresenterImp(view: RegisterOrLoginContract.View) : RegisterOrLoginContract.Presenter {
+
+    var mView: RegisterOrLoginContract.View? = view
+
     override fun register(username: String, pwd: String, repwd: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         SmartRefreshLayoutUtils.initRefreshLayoutBz(activity!!, smartRefreshLayout!!)
         smartRefreshLayout?.setEnableLoadMore(false)
         smartRefreshLayout?.setOnRefreshListener { refreshLayout ->
-//            presenterImp.getColumnList()
+            //            presenterImp.getColumnList()
         }
     }
 
