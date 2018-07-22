@@ -27,7 +27,7 @@ abstract class BaseFragment : RxFragment() {
     protected abstract fun getLayoutId(): Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val parent: ViewGroup = rootView?.parent as ViewGroup
+        val parent: ViewGroup? = rootView?.parent as ViewGroup?
         parent?.removeView(rootView)
         if (getLayoutId() == 0) {
             throw RuntimeException("getLayoutId need to set up res")

@@ -1,13 +1,19 @@
 package com.welcome.home.playandroid.fragment
 
 import android.os.Bundle
-import android.widget.ExpandableListView
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import cn.bingoogolapple.bgabanner.BGABanner
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.welcome.home.playandroid.R
+import com.welcome.home.playandroid.adapter.HomeBannerAdapter
+import com.welcome.home.playandroid.adapter.HomeListAdapter
 import com.welcome.home.playandroid.base.BaseFragment
 import com.welcome.home.playandroid.bean.BannerList
 import com.welcome.home.playandroid.bean.HomeList
 import com.welcome.home.playandroid.contract.HomeContract
+import com.welcome.home.playandroid.presenter.HomePresenter
 import com.welcome.home.playandroid.util.SmartRefreshLayoutUtils
 
 /**
@@ -19,20 +25,32 @@ import com.welcome.home.playandroid.util.SmartRefreshLayoutUtils
  *     version: 1.0
  * </pre>
  */
-class HomeFragment : BaseFragment(), HomeContract.View {
+class HomeFragment : BaseFragment(), HomeContract.View, BGABanner.Delegate<View, Any> {
 
     private var smartRefreshLayout: SmartRefreshLayout? = null
-    private var expandableListeView: ExpandableListView? = null
+    private var recyclerView: RecyclerView? = null
+    private var mPresenter: HomePresenter? = null
+    private var page = 0
+    private var mAdapter: HomeListAdapter? = null
+    private var mHeadBanner: BGABanner? = null
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_column;
+        return R.layout.fragment_home
     }
 
-
     override fun initView(savedInstanceState: Bundle?) {
-        initRefreshLayout()
         smartRefreshLayout = rootView?.findViewById(R.id.refresh_content_smart_layout)
-        expandableListeView = rootView?.findViewById(R.id.fragment_column_expandable_listview)
+        recyclerView = rootView?.findViewById(R.id.refresh_content_recyclerview)
+        recyclerView?.layoutManager = LinearLayoutManager(activity!!)
+        mAdapter = HomeListAdapter(activity!!)
+        recyclerView?.adapter = mAdapter
+        val headView = mAdapter?.setHeaderView(R.layout.item_head_view)
+        mHeadBanner = headView?.findViewById(R.id.recommed_banner)
+        val homeBannderAdapter = HomeBannerAdapter()
+        mHeadBanner?.setDelegate(this)
+        mHeadBanner?.setAdapter(homeBannderAdapter)
+        mPresenter = HomePresenter(this)
+        initRefreshLayout()
     }
 
     private fun initRefreshLayout() {
@@ -43,27 +61,24 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         }
     }
 
+    override fun onBannerItemClick(banner: BGABanner?, itemView: View?, model: Any?, position: Int) {
+    }
+
     override fun setBannerList(bannerList: List<BannerList>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun setHomeList(homeList: HomeList) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun addHomeList(homeList: HomeList) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showErrMsg(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun lazyFetchData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

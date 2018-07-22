@@ -99,6 +99,16 @@ class MainActivity : BaseActivity(), RegisterOrLoginContract.View {
                 mCurrentFragment = childFragment
                 mCurrentTag = tag
             }
+        } else {
+            if (mCurrentFragment == null) {
+                val childFragment = findFragmentByIndex(index)
+                if (childFragment == null) return
+                ft.replace(activity_main_root_fl.id, childFragment, tag)
+                        .addToBackStack(tag)
+                        .commitAllowingStateLoss()
+                mCurrentFragment = childFragment
+                mCurrentTag = tag
+            }
         }
     }
 
