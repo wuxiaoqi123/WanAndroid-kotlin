@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.welcome.home.playandroid.R
 import com.welcome.home.playandroid.adapter.HomeBannerAdapter
 import com.welcome.home.playandroid.adapter.HomeListAdapter
@@ -56,29 +59,51 @@ class HomeFragment : BaseFragment(), HomeContract.View, BGABanner.Delegate<View,
     private fun initRefreshLayout() {
         SmartRefreshLayoutUtils.initRefreshLayoutBz(activity!!, smartRefreshLayout!!)
         smartRefreshLayout?.setEnableLoadMore(false)
-        smartRefreshLayout?.setOnRefreshListener { refreshLayout ->
-            //            presenterImp.getColumnList()
-        }
-    }
+        smartRefreshLayout?.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
+            override fun onLoadMore(refreshLayout: RefreshLayout) {
+                page++
+                mPresenter?.loadBannerList()
+                mPresenter?.loadHomeList(page)
+            }
 
-    override fun onBannerItemClick(banner: BGABanner?, itemView: View?, model: Any?, position: Int) {
+            override fun onRefresh(refreshLayout: RefreshLayout) {
+                page = 0
+                mPresenter?.loadHomeList(page)
+            }
+        })
     }
 
     override fun setBannerList(bannerList: List<BannerList>) {
+        smartRefreshLayout?.finishRefresh()
+        mHeadBanner?.setData(R.layout.item_image_banner, bannerList, null)
+        mAdapter?.notifyDataSetChanged()
     }
 
     override fun setHomeList(homeList: HomeList) {
+        smartRefreshLayout?.finishRefresh()
+        mAdapter?.setHomeList(homeList)
     }
 
     override fun addHomeList(homeList: HomeList) {
+        smartRefreshLayout?.finishLoadMore()
+        mAdapter?.addHomeList(homeList)
     }
 
     override fun showErrMsg(msg: String) {
+        Toast.makeText(activity!!, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun lazyFetchData() {
+        mPresenter?.loadBannerList()
+        mPresenter?.loadHomeList(0)
     }
 
     override fun initListener() {
+    }
+
+    override fun onBannerItemClick(banner: BGABanner?, itemView: View?, model: Any?, position: Int) {
+        if (model is BannerList) {
+            //TODO
+        }
     }
 }
