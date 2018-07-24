@@ -17,7 +17,7 @@ interface WanAndroidApi {
     fun getColumnContentList(@Path("page") page: Int, @Query("cid") c_id: Int): Observable<HttpResponse<ColumnContentList>>
 
     @GET("/banner/json")
-    fun getBannerList(): Observable<HttpResponse<List<BannerList>>>
+    fun getBannerList(): Observable<HttpResponse<MutableList<BannerList>>>
 
     @FormUrlEncoded
     @POST("/user/register")
