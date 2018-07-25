@@ -20,12 +20,6 @@ import com.welcome.home.playandroid.util.SharedPreferenceUtils
  */
 class MyFragment : BaseFragment() {
 
-    companion object {
-        fun getInstance(): MyFragment {
-            return MyFragment()
-        }
-    }
-
     private var loginNameTv: TextView? = null
     private var exitTv: TextView? = null
     private var collectionsTv: TextView? = null

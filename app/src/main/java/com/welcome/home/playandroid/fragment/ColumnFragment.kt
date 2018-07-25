@@ -23,12 +23,6 @@ import com.welcome.home.playandroid.util.SmartRefreshLayoutUtils
  */
 class ColumnFragment : BaseFragment(), ColumnContract.View {
 
-    companion object {
-        fun getInstance(): ColumnFragment {
-            return ColumnFragment()
-        }
-    }
-
     private var smartRefreshLayout: SmartRefreshLayout? = null
     private var expandableListView: ExpandableListView? = null
 
@@ -67,6 +61,6 @@ class ColumnFragment : BaseFragment(), ColumnContract.View {
     }
 
     override fun showErrMsg(msg: String) {
-        Toast.makeText(activity!!, msg, Toast.LENGTH_LONG)
+        Toast.makeText(activity!!, msg, Toast.LENGTH_LONG).show()
     }
 }

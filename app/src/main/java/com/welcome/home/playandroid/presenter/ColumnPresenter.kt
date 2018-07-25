@@ -17,13 +17,9 @@ import com.welcome.home.playandroid.net.transformer.DefaultTransformer
  *     version: 1.0
  * </pre>
  */
-class ColumnPresenter : ColumnContract.Presenter {
+class ColumnPresenter(view: ColumnContract.View) : ColumnContract.Presenter {
 
-    private var mView: ColumnContract.View? = null
-
-    constructor(view: ColumnContract.View) {
-        this.mView = view
-    }
+    private var mView: ColumnContract.View? = view
 
     override fun getColumnList() {
         HttpUtils.Singleton.instance.getRetrofitClient().build(WanAndroidApi::class.java)!!
