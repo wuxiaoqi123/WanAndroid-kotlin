@@ -7,5 +7,5 @@ data class CollectList(
         val pageCount: Int,
         val size: Int,
         val total: Int,
-        val datas: List<CollectArticleList>
+        val datas: MutableList<CollectArticleList>
 )

@@ -272,7 +272,6 @@ class BrowserActivity : BaseActivity(), CollectContract.View {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
             else -> {
             }
         }
