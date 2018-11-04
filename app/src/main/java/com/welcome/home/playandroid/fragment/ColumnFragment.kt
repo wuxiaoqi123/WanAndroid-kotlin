@@ -44,7 +44,7 @@ class ColumnFragment : BaseFragment(), ColumnContract.View {
 
     private fun initRefreshLayout() {
         SmartRefreshLayoutUtils.initRefreshLayoutBz(activity!!, smartRefreshLayout!!)
-        smartRefreshLayout?.setEnableLoadMore(true)
+        smartRefreshLayout?.setEnableLoadMore(false)
         smartRefreshLayout?.setOnRefreshListener({ presenterImp?.getColumnList() })
     }
 

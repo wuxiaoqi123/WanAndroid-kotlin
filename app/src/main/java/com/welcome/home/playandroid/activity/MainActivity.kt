@@ -129,7 +129,7 @@ class MainActivity : BaseActivity(), RegisterOrLoginContract.View {
             if (System.currentTimeMillis() - lastClickTime > 2000) {
                 lastClickTime = System.currentTimeMillis()
                 Toast.makeText(this, "再按一次退出", Toast.LENGTH_LONG).show()
-            } else super.onBackPressed()
+            } else finish()
         }
     }
 
