@@ -34,12 +34,12 @@ class ColumnFragment : BaseFragment(), ColumnContract.View {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        initRefreshLayout()
         smartRefreshLayout = rootView!!.findViewById(R.id.refresh_content_smart_layout)
         expandableListView = rootView!!.findViewById(R.id.fragment_column_expandable_listview)
         mAdapter = ColumnExpandableListViewAdapter(activity!!)
         expandableListView!!.setAdapter(mAdapter)
         presenterImp = ColumnPresenter(this)
+        initRefreshLayout()
     }
 
     private fun initRefreshLayout() {
