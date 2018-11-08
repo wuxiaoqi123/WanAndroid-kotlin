@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, BGABanner.Delegate<View,
 
     private fun initRefreshLayout() {
         SmartRefreshLayoutUtils.initRefreshLayoutBz(activity!!, smartRefreshLayout!!)
-        smartRefreshLayout?.setEnableLoadMore(false)
+        smartRefreshLayout?.setEnableLoadMore(true)
         smartRefreshLayout?.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
                 page++

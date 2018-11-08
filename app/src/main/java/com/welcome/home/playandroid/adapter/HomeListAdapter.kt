@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.welcome.home.playandroid.R
+import com.welcome.home.playandroid.activity.BrowserActivity
 import com.welcome.home.playandroid.bean.HomeDataBean
 import com.welcome.home.playandroid.bean.HomeList
 
@@ -100,7 +101,7 @@ class HomeListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             authorTv!!.setText(homeListDatasBean.author)
             nicedateTv!!.setText(homeListDatasBean.niceDate)
             itemView.setOnClickListener { v ->
-                //                BrowserActivity.startActivity(itemView.context, homeListDatasBean.getTitle(), homeListDatasBean.getAuthor(), homeListDatasBean.getLink())
+                BrowserActivity.startActivity(itemView.context, homeListDatasBean.title, homeListDatasBean.author, homeListDatasBean.link)
             }
         }
     }
